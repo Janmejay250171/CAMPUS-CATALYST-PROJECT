@@ -63,7 +63,7 @@ A modern, full-stack Digital Leave Management System built with **Node.js, Expre
 
 ## Deployment on Render
 1. Create a new **Web Service** on [Render](https://render.com).
-2. Connect the GitHub repository: `yaswanth-thota-07/Leave-Management`.
+2. Connect the GitHub repository: `Janmejay250171/CAMPUS-CATALYST-PROJECT`.
 3. Set **Runtime** to `Node`.
 4. Set **Build Command**: `npm install`
 5. Set **Start Command**: `npm start`
