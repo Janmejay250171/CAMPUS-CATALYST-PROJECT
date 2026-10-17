@@ -1,4 +1,4 @@
-# 🏛️ Campus Catalyst · Digital Leave Management System (DLMS)
+# Campus Catalyst - Digital Leave Management System (DLMS)
 
 <div align="center">
 
@@ -14,12 +14,12 @@
   <b>An enterprise-grade, full-stack campus governance platform engineered with sequential multi-tier approval workflows, AI-driven academic decision intelligence, cryptographic document fraud forensics, and real-time security gate dispatch.</b>
 </p>
 
-[Explore Capabilities](#-core-capabilities) • [System Architecture](#-system-architecture) • [Role Matrix](#-role-based-access-control-rbac) • [AI & Forensics](#-ai-intelligence--fraud-prevention) • [API Reference](#-api-reference) • [Deployment](#-production-deployment)
+[Executive Summary](#executive-summary) • [Core Capabilities](#core-capabilities) • [System Architecture](#system-architecture) • [Role Matrix](#role-based-access-control-rbac) • [AI & Forensics](#ai-intelligence--fraud-prevention) • [API Reference](#api-reference) • [Deployment](#production-deployment)
 
 ---
 </div>
 
-## 🌟 Executive Summary
+## Executive Summary
 
 Traditional institutional leave processing relies on disconnected paper forms, fragile physical signatures, and scattered messaging threads. These legacy methods lack accountability, slow down urgent student movements, and expose administrations to forged medical slips, recycled permissions, and attendance discrepancies.
 
@@ -27,21 +27,21 @@ Traditional institutional leave processing relies on disconnected paper forms, f
 
 ---
 
-## ⚡ Core Capabilities
+## Core Capabilities
 
-- 🔄 **Strict Sequential Multi-Tier Approval Pipeline**: Requests flow deterministically through authority hierarchies (Class Teacher ➔ Warden ➔ HOD ➔ Joint Director ➔ Director) based on duration and student residency. Higher authorities are presented with requests only after prior required verifications pass.
-- 🤖 **Gemini-Powered Academic Decision Intelligence**: Evaluates student attendance records, previous semester CGPA/percentages, request frequency, and reason context (hackathons, medical emergencies, SSB interviews) to generate objective risk assessments (`APPROVE`, `APPROVE_WITH_CAUTION`, `NEEDS_REVIEW`).
-- 🔬 **Cryptographic Anti-Fraud & Document Forensics**:
+- **Strict Sequential Multi-Tier Approval Pipeline**: Requests flow deterministically through authority hierarchies (Class Teacher -> Warden -> HOD -> Joint Director -> Director) based on duration and student residency. Higher authorities are presented with requests only after prior required verifications pass.
+- **Gemini-Powered Academic Decision Intelligence**: Evaluates student attendance records, previous semester CGPA/percentages, request frequency, and reason context (hackathons, medical emergencies, SSB interviews) to generate objective risk assessments (`APPROVE`, `APPROVE_WITH_CAUTION`, `NEEDS_REVIEW`).
+- **Cryptographic Anti-Fraud & Document Forensics**:
   - **Cross-Student Reuse Detection**: Uses SHA-256 document hashing to instantly identify identical proof files uploaded by different students.
   - **Synthetic & AI Artifact Inspection**: Heuristic and multi-modal analysis checks uploaded proof images for metadata anomalies, missing EXIF structures, and synthetic image model signatures (Midjourney, Stable Diffusion).
-- 🔒 **Zero-Trust Role-Gated Visibility**: Forensic audits, fraud indicators, and AI recommendations are strictly isolated to authenticated administrative and faculty roles—never exposed to student-facing clients.
-- 🛡️ **Sub-Second Gate Security Dispatch**: Integrated barcode/registration lookup grants campus security immediate verification of active, approved leaves and outpasses with complete audit accountability.
-- 📊 **Immutable Audit Trail**: Every status transition, note, approval, and rejection is permanently timestamped and attributed with actor identifiers.
-- ☁️ **Cloud-Native & Production Ready**: Fully configured for containerized deployments with automated database seeders, DNS failover resolvers, health check probes (`/health`), and graceful shutdown routines.
+- **Zero-Trust Role-Gated Visibility**: Forensic audits, fraud indicators, and AI recommendations are strictly isolated to authenticated administrative and faculty roles—never exposed to student-facing clients.
+- **Sub-Second Gate Security Dispatch**: Integrated barcode/registration lookup grants campus security immediate verification of active, approved leaves and outpasses with complete audit accountability.
+- **Immutable Audit Trail**: Every status transition, note, approval, and rejection is permanently timestamped and attributed with actor identifiers.
+- **Cloud-Native & Production Ready**: Fully configured for containerized deployments with automated database seeders, DNS failover resolvers, health check probes (`/health`), and graceful shutdown routines.
 
 ---
 
-## 🏗️ System Architecture
+## System Architecture
 
 Campus Catalyst DLMS adheres to the **Model-View-Controller (MVC)** architectural paradigm, separating data models, client presentation, and business logic into modular, testable tiers.
 
@@ -91,7 +91,7 @@ flowchart TD
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```
 DLMS/
@@ -144,7 +144,7 @@ DLMS/
 
 ---
 
-## 👥 Role-Based Access Control (RBAC)
+## Role-Based Access Control (RBAC)
 
 The system governs permissions using an 8-level Role-Based Access Control matrix:
 
@@ -161,7 +161,7 @@ The system governs permissions using an 8-level Role-Based Access Control matrix
 
 ---
 
-## 🧠 AI Intelligence & Fraud Prevention
+## AI Intelligence & Fraud Prevention
 
 ### 1. Dual-Tier Document Authenticity Forensics
 Uploaded proof documents (medical certificates, event invitations, parent sanction letters) undergo two-tiered screening:
@@ -181,7 +181,7 @@ $$\text{Risk Score} = f(\text{Attendance } \%, \text{ CGPA / Last Sem } \%, \tex
 
 ---
 
-## 🔌 API Reference
+## API Reference
 
 ### Health & Gate Verification
 | Method | Endpoint | Description |
@@ -213,7 +213,7 @@ $$\text{Risk Score} = f(\text{Attendance } \%, \text{ CGPA / Last Sem } \%, \tex
 
 ---
 
-## 🚀 Getting Started & Local Development
+## Getting Started & Local Development
 
 ### Prerequisites
 - **Node.js**: `v18.0.0` or higher
@@ -253,13 +253,13 @@ $$\text{Risk Score} = f(\text{Attendance } \%, \text{ CGPA / Last Sem } \%, \tex
    http://localhost:5000
    ```
 
-### ⚡ Windows Quick-Run Scripts
+### Windows Quick-Run Scripts
 - **`start-mern.bat`**: One-click script that launches the Node server and opens your default browser at `http://localhost:5000`.
 - **`open-app.bat`**: Directly launches the web application frontend in your default browser.
 
 ---
 
-## 🐳 Production Deployment
+## Production Deployment
 
 ### Option A: Render Cloud Deployment (Recommended)
 This repository includes a native [`render.yaml`](render.yaml) specification:
@@ -296,7 +296,7 @@ Build and run the application in an isolated, production-grade container:
 
 ---
 
-## 🔐 Environment Variables
+## Environment Variables
 
 | Variable | Description | Default / Example | Required |
 | :--- | :--- | :--- | :---: |
@@ -309,7 +309,7 @@ Build and run the application in an isolated, production-grade container:
 
 ---
 
-## 🛡️ Security & Privacy Practices
+## Security & Privacy Practices
 
 - **Role-Based Isolation**: Staff-only AI reviews and cryptographic fraud evaluations are gated both at the Express controller level and in client-side state mapping.
 - **Fail-Safe Fallbacks**: If the cloud Gemini API is unreachable or `GEMINI_API_KEY` is not provided, the platform automatically falls back to deterministic rule scoring and local document heuristics without service interruption.
@@ -318,7 +318,7 @@ Build and run the application in an isolated, production-grade container:
 
 ---
 
-## 📄 License & Maintainer
+## License & Maintainer
 
 Distributed under the **ISC License**. Developed and maintained by **[Janmejay Singh](https://github.com/Janmejay250171)**.
 
