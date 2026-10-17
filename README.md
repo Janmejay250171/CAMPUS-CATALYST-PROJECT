@@ -47,15 +47,15 @@ Campus Catalyst DLMS adheres to the **Model-View-Controller (MVC)** architectura
 
 ```mermaid
 flowchart TD
-    subgraph Client Tier ["Client Presentation Tier (SPA)"]
-        UI["Modern Responsive Interface\n(HTML5 / Google Sans / Vanilla JS)"]
-        State["Client State & Dynamic Role Views"]
+    subgraph ClientTier ["Client Presentation Tier (SPA)"]
+        UI["Modern Responsive Interface<br/>(HTML5 / Google Sans / Vanilla JS)"]
+        State["Client State & Dynamic Views"]
         UI <--> State
     end
 
-    subgraph Server Tier ["Application Server Tier (Node.js & Express 5)"]
+    subgraph ServerTier ["Application Server Tier (Node.js & Express 5)"]
         Router["API Router (/api)"]
-        AuthMiddleware["Auth & Staff Role Gatekeeper"]
+        AuthMiddleware["Auth & Role Gatekeeper"]
         
         subgraph Controllers ["MVC Controllers"]
             LeaveCtrl["leaveController.js"]
@@ -65,26 +65,28 @@ flowchart TD
         end
 
         subgraph Engines ["Intelligence & Security Engines"]
-            AIEngine["aiRecommendation.js\n(Gemini 2.5 Flash API)"]
-            DocEngine["docForensics.js\n(EXIF / Metadata Heuristics)"]
-            HashEngine["duplicateCheck.js\n(SHA-256 Fingerprinting)"]
+            AIEngine["aiRecommendation.js<br/>(Gemini 2.5 Flash API)"]
+            DocEngine["docForensics.js<br/>(EXIF & Metadata Heuristics)"]
+            HashEngine["duplicateCheck.js<br/>(SHA-256 Fingerprinting)"]
         end
 
+        Models["Mongoose ODM Models"]
+
         Router --> AuthMiddleware
-        AuthMiddleware --> Controllers
-        AICtrl --> Engines
+        AuthMiddleware --> LeaveCtrl & AICtrl & UserCtrl & GateCtrl
+        AICtrl <--> AIEngine & DocEngine & HashEngine
+        LeaveCtrl & AICtrl & UserCtrl & GateCtrl --> Models
     end
 
-    subgraph Data Tier ["Persistent Data Tier (MongoDB Atlas)"]
+    subgraph DataTier ["Persistent Data Tier (MongoDB Atlas)"]
         M1[("Users Collection")]
         M2[("Leaves Collection")]
-        M3[("FileDocs Collection (Base64 + Hash)")]
+        M3[("FileDocs Collection")]
         M4[("Audits & Hostels Collection")]
     end
 
-    State <==>|RESTful JSON & CORS| Router
-    Controllers <==> Mongoose
-    Mongoose <==> Data Tier
+    State <-->|"RESTful JSON & CORS"| Router
+    Models <--> M1 & M2 & M3 & M4
 ```
 
 ---
