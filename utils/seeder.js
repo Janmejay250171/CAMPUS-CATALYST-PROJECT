@@ -5,15 +5,22 @@ const Hostel = require('../models/Hostel');
 const { uid, hash, STAGES, SEED_DEPTS, SEED_HOSTELS } = require('./helpers');
 
 async function seedDatabaseIfEmpty() {
+  try {
+    await User.updateMany({ 'profile.regNo': '250361' }, { $set: { 'profile.regNo': '250171', email: '250171@college.edu' } });
+    await Leave.updateMany({ 'snapshot.regNo': '250361' }, { $set: { 'snapshot.regNo': '250171' } });
+  } catch (e) {
+    console.error('Migration note:', e.message);
+  }
+
   const userCount = await User.countDocuments();
   if (userCount > 0) {
-    // Ensure demo students 250361 and 240362 exist
-    const has250361 = await User.findOne({ 'profile.regNo': '250361' });
-    if (!has250361) {
+    // Ensure demo students 250171 and 240362 exist
+    const has250171 = await User.findOne({ 'profile.regNo': '250171' });
+    if (!has250171) {
       await User.create([
         {
-          id: uid(), role: 'STUDENT', name: 'Rahul Sharma', email: '250361@college.edu', passwordHash: hash('password123'), isActive: true, mustChange: false, createdAt: Date.now() - 864e5 * 2,
-          profile: { regNo: '250361', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
+          id: uid(), role: 'STUDENT', name: 'Rahul Sharma', email: '250171@college.edu', passwordHash: hash('password123'), isActive: true, mustChange: false, createdAt: Date.now() - 864e5 * 2,
+          profile: { regNo: '250171', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
         },
         {
           id: uid(), role: 'STUDENT', name: 'Priya Verma', email: '240362@college.edu', passwordHash: hash('password123'), isActive: true, mustChange: false, createdAt: Date.now() - 864e5 * 3,
@@ -37,8 +44,8 @@ async function seedDatabaseIfEmpty() {
   await User.insertMany([
     { id: 'admin', role: 'ADMIN', name: 'Main Admin', email: 'admin@gmail.com', passwordHash: hash('admin123'), isActive: true, mustChange: false, createdAt: now },
     {
-      id: s1Id, role: 'STUDENT', name: 'Rahul Sharma', email: '250361@college.edu', passwordHash: hash('password123'), isActive: true, mustChange: false, createdAt: now - 864e5 * 2,
-      profile: { regNo: '250361', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
+      id: s1Id, role: 'STUDENT', name: 'Rahul Sharma', email: '250171@college.edu', passwordHash: hash('password123'), isActive: true, mustChange: false, createdAt: now - 864e5 * 2,
+      profile: { regNo: '250171', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
     },
     {
       id: s2Id, role: 'STUDENT', name: 'Priya Verma', email: '240362@college.edu', passwordHash: hash('password123'), isActive: true, mustChange: false, createdAt: now - 864e5 * 3,
@@ -74,7 +81,7 @@ async function seedDatabaseIfEmpty() {
       guardianMobile: '9876543211',
       signature: 'VERIFIED',
       docs: [],
-      snapshot: { regNo: '250361', year: 'SE', section: 'A', departmentId: 'COMP' },
+      snapshot: { regNo: '250171', year: 'SE', section: 'A', departmentId: 'COMP' },
       status: 'PENDING_CLASS_TEACHER',
       createdAt: now - 3 * 36e5,
       approvals: STAGES.map((s, i) => ({ stage: i + 1, role: s.role, decision: 'PENDING', actedBy: null, actorName: '', note: '', actedAt: null }))
@@ -111,7 +118,7 @@ async function seedDatabaseIfEmpty() {
     }
   ]);
 
-  console.log('MongoDB Seeded successfully with demo accounts (Rahul Sharma 250361, Priya Verma 240362, Class Teacher, Warden & leaves).');
+  console.log('MongoDB Seeded successfully with demo accounts (Rahul Sharma 250171, Priya Verma 240362, Class Teacher, Warden & leaves).');
 }
 
 module.exports = { seedDatabaseIfEmpty };

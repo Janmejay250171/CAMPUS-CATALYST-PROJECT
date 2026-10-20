@@ -183,7 +183,7 @@
     id: l?.studentId || 'unknown',
     name: 'Student',
     role: 'STUDENT',
-    profile: l?.snapshot || { regNo: '250361', year: 'FE', section: 'A', departmentId: 'COMP', hostelId: 'VISH', roomNo: '—', phone: '—', parentPhone: '—' }
+    profile: l?.snapshot || { regNo: '250171', year: 'FE', section: 'A', departmentId: 'COMP', hostelId: 'VISH', roomNo: '—', phone: '—', parentPhone: '—' }
   };
 
   async function seed() {
@@ -215,7 +215,7 @@
         guardianMobile: '9876543211',
         signature: 'VERIFIED',
         docs: [],
-        snapshot: { regNo: '250361', year: 'SE', section: 'A', departmentId: 'COMP' },
+        snapshot: { regNo: '250171', year: 'SE', section: 'A', departmentId: 'COMP' },
         status: 'PENDING_CLASS_TEACHER',
         createdAt: nowTime - 3 * 36e5,
         approvals: STAGES.map((s, i) => ({ stage: i + 1, role: s.role, decision: 'PENDING', actedBy: null, actorName: '', note: '', actedAt: null }))
@@ -258,8 +258,8 @@
       users: [
         { id: 'admin', role: 'ADMIN', name: 'Main Admin', email: 'admin@gmail.com', passwordHash: await hash('admin123'), isActive: true, mustChange: false, createdAt: nowTime },
         {
-          id: s1Id, role: 'STUDENT', name: 'Rahul Sharma', email: '250361@college.edu', passwordHash: studentPw, isActive: true, mustChange: false, createdAt: nowTime - 864e5 * 2,
-          profile: { regNo: '250361', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
+          id: s1Id, role: 'STUDENT', name: 'Rahul Sharma', email: '250171@college.edu', passwordHash: studentPw, isActive: true, mustChange: false, createdAt: nowTime - 864e5 * 2,
+          profile: { regNo: '250171', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
         },
         {
           id: s2Id, role: 'STUDENT', name: 'Priya Verma', email: '240362@college.edu', passwordHash: studentPw, isActive: true, mustChange: false, createdAt: nowTime - 864e5 * 3,
@@ -470,7 +470,7 @@
             <span class="floater" data-floater style="--dur:7.4s;--delay:.5s;--rot:5deg"><span class="ms">verified</span>Gate verified</span>
             <span class="floater avatar" data-floater style="--dur:8.2s;--delay:.2s;--rot:8deg;background:#4285f4">RS</span>
             <span class="floater" data-floater style="--dur:7s;--delay:.9s;--rot:-4deg"><span class="ms">schedule</span>2-day leave</span>
-            <span class="floater" data-floater style="--dur:6.8s;--delay:1.3s;--rot:6deg"><span class="ms">badge</span>#250361</span>
+            <span class="floater" data-floater style="--dur:6.8s;--delay:1.3s;--rot:6deg"><span class="ms">badge</span>#250171</span>
           </div>
           <div class="flow">
             <span>Student</span><span class="ms">chevron_right</span><span>Class Teacher</span><span class="ms">chevron_right</span><span>Warden</span><span class="ms">chevron_right</span><span>HOD</span><span class="ms">chevron_right</span><span>JD</span><span class="ms">chevron_right</span><span>Director</span><span class="ms">chevron_right</span><span>Gate</span>
@@ -484,7 +484,7 @@
           </div>
           <form data-form="login" novalidate>
             ${staff ? `<label class="field"><span>Login as</span><select name="role" data-change="staffRole">${options(STAFF_ROLES.map(r => [r, ROLE_LABEL[r]]), ui.staffRole)}</select></label>` : ''}
-            <label class="field"><span>${staff ? 'Email' : 'Registration number (e.g. 250361) or email'}</span><input name="login" autocomplete="username" value="${esc(ui.lastLogin)}" placeholder="${staff ? 'admin@gmail.com' : 'e.g. 250361 or 240362'}" required></label>
+            <label class="field"><span>${staff ? 'Email' : 'Registration number (e.g. 250171) or email'}</span><input name="login" autocomplete="username" value="${esc(ui.lastLogin)}" placeholder="${staff ? 'admin@gmail.com' : 'e.g. 250171 or 240362'}" required></label>
             <label class="field pw"><span>Password</span><input name="password" type="password" autocomplete="current-password" required><button type="button" class="icon-btn" data-action="togglePw" aria-label="Show password"><span class="ms">visibility</span></button></label>
             ${err(ui.error)}
             <button class="btn filled block" type="submit">Sign in</button>
@@ -500,11 +500,11 @@
     return `<section class="register glass">
       <button class="btn text" data-action="goLogin" style="margin-left:-12px"><span class="ms">arrow_back</span>Sign in</button>
       <h2>Create student account</h2>
-      <p>Use your college registration number (e.g. 250361, 240362).</p>
+      <p>Use your college registration number (e.g. 250171, 240362).</p>
       <form data-form="register" novalidate>
         <div class="grid3">
           <label class="field span2"><span>Full name</span><input name="name" placeholder="Full name" required></label>
-          <label class="field"><span>Registration number</span><input name="regNo" placeholder="e.g. 250361" required inputmode="numeric" maxlength="12"></label>
+          <label class="field"><span>Registration number</span><input name="regNo" placeholder="e.g. 250171" required inputmode="numeric" maxlength="12"></label>
           <label class="field"><span>Year</span><select name="year">${options(YEARS.map(y => [y, y]), '', 'Select')}</select></label>
           <label class="field"><span>Branch</span><select name="departmentId">${options(deptOpts(), '', 'Select')}</select></label>
           <label class="field"><span>Section</span><select name="section">${options(SECTIONS.map(s => [s, s]), '', 'Select')}</select></label>
@@ -928,7 +928,7 @@
     if (ui.sectionF) list = list.filter(u => u.profile?.section === ui.sectionF);
     if (ui.hostelF) list = list.filter(u => u.profile?.hostelId === ui.hostelF);
     list.sort((a, b) => a.name.localeCompare(b.name));
-    return `<div class="page-head"><div><h1>Students</h1><p>Students can sign in using their registration number (e.g. 250361, 240362).</p></div></div>
+    return `<div class="page-head"><div><h1>Students</h1><p>Students can sign in using their registration number (e.g. 250171, 240362).</p></div></div>
       ${commonFilters(true)}
       <section class="panel glass">${list.length ? `<div class="table-wrap"><table>
         <thead><tr><th>Name</th><th>Regn No</th><th>Class</th><th>Hostel</th><th>Mobile</th><th>Status</th><th></th></tr></thead>
@@ -1087,11 +1087,11 @@
         <tbody>${ui.recent.map(r => `<tr><td>${fmt(r.at)}</td><td><code>${esc(r.reg)}</code></td><td>${esc(r.name || '—')}</td><td><span class="status ${r.cls === 'ok' ? 'APPROVED' : r.cls === 'bad' ? 'REJECTED' : ''}">${r.title}</span></td></tr>`).join('')}</tbody></table></div>` : '<div class="empty"><span class="ms">history</span>No checks yet.</div>'}</section>`;
     else {
       const g = ui.gate;
-      content = `<div class="page-head"><div><h1>Verify student</h1><p>Enter the student registration number (e.g. 250361, 240362)</p></div></div>
+      content = `<div class="page-head"><div><h1>Verify student</h1><p>Enter the student registration number (e.g. 250171, 240362)</p></div></div>
       <section class="panel glass">
         <form class="gate-search" data-form="gate" autocomplete="off">
           <span class="ms">search</span>
-          <input name="reg" placeholder="Registration number (e.g. 250361, 240362)" aria-label="Registration number" maxlength="16" autofocus>
+          <input name="reg" placeholder="Registration number (e.g. 250171, 240362)" aria-label="Registration number" maxlength="16" autofocus>
           <button class="btn filled" type="submit">Verify</button>
         </form>
         ${g ? `<div class="verdict ${g.cls}">
@@ -1318,7 +1318,7 @@
       db = load();
       const fail = m => { ui.error = m; ui.regHostel = v.hostelId; render(); const nf = $('[data-form="register"]'); Object.entries(v).forEach(([k, val]) => { if (nf.elements[k]) nf.elements[k].value = val; }); };
       if (!v.name?.trim() || !v.regNo || !v.email || !v.phone || !v.parentPhone || !v.roomNo?.trim() || !v.year || !v.departmentId || !v.section) return fail('Fill in every field.');
-      if (!/^[A-Za-z0-9/-]{4,16}$/.test(v.regNo)) return fail('Registration number looks wrong. Use numbers like 250361, 240362.');
+      if (!/^[A-Za-z0-9/-]{4,16}$/.test(v.regNo)) return fail('Registration number looks wrong. Use numbers like 250171, 240362.');
       if (!/^\S+@\S+\.\S+$/.test(v.email)) return fail('Enter a valid email.');
       if (!/^\d{10}$/.test(v.phone) || !/^\d{10}$/.test(v.parentPhone)) return fail('Mobile numbers must be 10 digits.');
       if ((v.password || '').length < 6) return fail('Password must be at least 6 characters.');
@@ -1362,7 +1362,7 @@
           docs.push({ id, name: u.name, type: u.type, size: u.size });
         }
         db = load();
-        const p = me.profile || { regNo: '250361', year: 'FE', section: 'A', departmentId: 'COMP' };
+        const p = me.profile || { regNo: '250171', year: 'FE', section: 'A', departmentId: 'COMP' };
         const payload = {
           studentId: me.id, type: v.type, reason: v.reason.trim(), address: v.address.trim(), fromAt, toAt,
           hostelId: v.hostelId, block: v.block || '', roomNo: v.roomNo.trim(), attendance: att, lastSem: sem,
@@ -1562,15 +1562,26 @@
         db = await seed();
         save();
       } else {
+        // Migrate any cached 250361 to 250171
+        (db.users || []).forEach(u => {
+          if (u.profile?.regNo === '250361') {
+            u.profile.regNo = '250171';
+            if (u.email === '250361@college.edu') u.email = '250171@college.edu';
+          }
+        });
+        (db.leaves || []).forEach(l => {
+          if (l.snapshot?.regNo === '250361') l.snapshot.regNo = '250171';
+        });
+
         // Ensure demo accounts exist for testing
-        const has250361 = (db.users || []).some(u => u.profile?.regNo === '250361');
-        if (!has250361) {
+        const has250171 = (db.users || []).some(u => u.profile?.regNo === '250171');
+        if (!has250171) {
           const studentPw = await hash('password123');
           const teacherPw = await hash('teacher123');
           db.users.push(
             {
-              id: uid(), role: 'STUDENT', name: 'Rahul Sharma', email: '250361@college.edu', passwordHash: studentPw, isActive: true, mustChange: false, createdAt: now() - 864e5 * 2,
-              profile: { regNo: '250361', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
+              id: uid(), role: 'STUDENT', name: 'Rahul Sharma', email: '250171@college.edu', passwordHash: studentPw, isActive: true, mustChange: false, createdAt: now() - 864e5 * 2,
+              profile: { regNo: '250171', phone: '9876543210', parentPhone: '9876543211', year: 'SE', departmentId: 'COMP', section: 'A', hostelId: 'VISH', block: 'A', roomNo: '204' }
             },
             {
               id: uid(), role: 'STUDENT', name: 'Priya Verma', email: '240362@college.edu', passwordHash: studentPw, isActive: true, mustChange: false, createdAt: now() - 864e5 * 3,
