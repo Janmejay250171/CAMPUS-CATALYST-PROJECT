@@ -303,7 +303,7 @@ Build and run the application in an isolated, production-grade container:
 | `PORT` | Network port the HTTP server binds to | `5000` | Optional |
 | `NODE_ENV` | Runtime environment (`development` / `production`) | `development` | Optional |
 | `MONGODB_URI` | MongoDB connection string (Atlas SRV or Local URI) | `mongodb://127.0.0.1:27017/dlms` | **Yes** |
-| `DATABASE_NAME` | Target MongoDB database name | `sehatsure` or `dlms` | Optional |
+| `DATABASE_NAME` | Target MongoDB database name | `dlms` | Optional |
 | `GEMINI_API_KEY` | Google Gemini API key for advanced AI review | *None (uses offline heuristics)* | Optional |
 | `AI_MODEL` | Gemini model version identifier | `gemini-2.5-flash` | Optional |
 

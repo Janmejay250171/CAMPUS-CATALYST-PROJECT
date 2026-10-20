@@ -10,7 +10,7 @@ services:
       - key: NODE_ENV
         value: production
       - key: DATABASE_NAME
-        value: sehatsure
+        value: dlms
       - key: MONGODB_URI
         sync: false
       - key: GEMINI_API_KEY

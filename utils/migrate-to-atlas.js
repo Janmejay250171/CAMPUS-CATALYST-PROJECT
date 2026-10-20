@@ -10,7 +10,7 @@ function getTargetUri() {
   let uri = process.env.MONGODB_URI;
   if (!uri) throw new Error('MONGODB_URI is not defined in .env');
 
-  const dbName = process.env.DATABASE_NAME || 'sehatsure';
+  const dbName = process.env.DATABASE_NAME || 'dlms';
 
   if (uri.startsWith('mongodb+srv://')) {
     const urlParts = uri.split('?');
